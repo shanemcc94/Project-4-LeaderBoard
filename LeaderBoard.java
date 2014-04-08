@@ -1,12 +1,12 @@
 public class LeaderBoard
 {
 	private int tN;
-    private int gP;
-    private int hW;
-    private int hD;
-    private int hL;
-    private int hGFor;
-    private int hGAgainst;
+    	private int gP;
+    	private int hW;
+    	private int hD;
+    	private int hL;
+	private int hGFor;
+	private int hGAgainst;
 	private int awayW;
 	private int awayD;
 	private int awayL;
@@ -14,7 +14,7 @@ public class LeaderBoard
 	private int awayGAgainst;
 	private int goalD;
 	private int totalP;
-    LeaderBoard(int teamNumber, int gamesPlayed, int homeWins, int homeDraw, int homeLoss, int homeGoalsFor, int homeGoalsAgainst, int awayWins, int awayDraws, int awayLoss, int awayGoalsFor, int awayGoalsAgainst, int goalDifference, int totalPoints )
+    	LeaderBoard(int teamNumber, int gamesPlayed, int homeWins, int homeDraw, int homeLoss, int homeGoalsFor, int homeGoalsAgainst, int awayWins, int awayDraws, int awayLoss, int awayGoalsFor, int awayGoalsAgainst, int goalDifference, int totalPoints )
 	{
 		tN = teamNumber;
 		gP = gamesPlayed;
@@ -37,11 +37,11 @@ public class LeaderBoard
 	}
 	public void setGamesPlayed(int gamesPlayed)
 	{ 	
-  	 gP += gamesPlayed;
+  	 	gP += gamesPlayed;
 	}
 	public void setHomeWins(int homeWins)
 	{ 	
-  	 hW += homeWins;
+  	 	hW += homeWins;
 	}
 	public void setHomeDraw(int homeDraw)
 	{ 
@@ -93,15 +93,15 @@ public class LeaderBoard
 	}
 	public int getGamesPlayed(int gamesPlayed)
 	{ 
-	return gP;	
+		return gP;	
 	}
 	public int getHomeWins(int homeWins)
 	{ 
-	return hW;	
+		return hW;	
 	}
 	public int getHomeDraw(int homeDraw)
 	{ 	
-  	return hD;
+  		return hD;
 	}
 	public int getHomeLoss(int homeLoss)
 	{ 	
