@@ -5,7 +5,6 @@ import java.io.*;
 public class project4
 {
 	public static Scanner globalScanner;
-	public static PrintWriter globalPrintWriter;
 	public static FileWriter globalFileWriter;
 	public static ArrayList <String> fixtureArrayList= new ArrayList<String>();
 	public static ArrayList<String> resultsArrayList= new ArrayList<String>();
