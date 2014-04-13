@@ -28,7 +28,7 @@ public class project
     //fixtureArrayListInteger = createArrayListInteger(filename1);
     //resultsArrayListInteger = createArrayListInteger(filename2);
     //------------------------------------------------------------//
-   /* teamsArrayListSpring  = createArrayListString();
+    teamsArrayListSpring  = createArrayListString();
     ///////////////////////  can be deleted later Its ju8st a test!////////////////
     //----------------------------------------------------------------------------//
 		String tester1="";
@@ -56,7 +56,7 @@ public class project
 	    System.out.println("This here should output resultsList!\n");
 	    System.out.println(tester2);
 	    System.out.println("This here should output TeamsList!\n");
-	    System.out.println(tester3); */
+	    System.out.println(tester3); 
       ///////////////////End of test////////End of test////////////////////////////////
        //----------------------------------------------------------------------------//
       //---------------------Start of evaluation of userChoice!----------------------//
