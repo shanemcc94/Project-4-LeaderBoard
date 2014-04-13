@@ -1,19 +1,19 @@
 public class Teams
 {
-	private String tName;
-	private int tNumber;
- 
-	Teams(String teamName, int teamNumber)
-	{
-		tName = teamName;
-		tNumber = teamNumber;
-	}
-	public String getTeamName(String teamName)
-	{	   
-		return tName;
-	}
-	public int getTeamNumber(int teamNumber)
-	{   
-		return tNumber;
-	}
+  private int tNumber;
+  private String tName;
+
+  Teams(int teamNumber, String teamName )
+  { 
+     tNumber = teamNumber;
+     tName = teamName;
+  }
+   public int getTeamNumber()
+  {   
+     return tNumber;
+  }
+  public String getTeamName()
+  {   
+    return tName;
+  }
 }
