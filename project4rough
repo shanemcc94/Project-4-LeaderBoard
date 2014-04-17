@@ -306,10 +306,50 @@ public class project4
         }
       return tempArray; 
       }
-      ////////////////////////////////////////// Method View Fixtures ////////////////////////////////////////////////////////
+     ////////////////////////////////////////// Method View Fixtures ////////////////////////////////////////////////////////
      public static void viewListOfFixtures()throws IOException
      {
-             System.out.println("TeststRun [\"viewListOfFixtures\"]");
+        /*This Methods displayes to date played fixtures!*/
+        //----Object Assignments
+        Teams teamsDisplay;
+        Fixtures fixtureDisplay;
+        //---Integer value for the longest word e.g Teamname
+        int longestWord =0;  
+        //-- loop to assign Integer value for the longest Teamname!  
+        for (int index = 0; index < teamsArrayList.size(); index ++)
+            {
+               String tempword = teamsArrayList.get(index).getTeamName();
+               if (tempword.length() > longestWord)
+                   longestWord = tempword.length();
+            }
+        //---Integers for the Fixture Info    
+        int f1 =0;
+        int f2 =0;
+        int f3 =0; 
+        String result ="";
+        String teamName1="";
+        String  teamName2="";
+        //-- String to hold empty spaces!
+        String emptySpaces;
+        int tempInt =0;
+        for (int i = 0; i < resultsArrayList.size(); i++)
+            {
+              //---Assures string is empty and holds nothing before each iteration!
+              emptySpaces ="";
+              f1 = fixtureArrayList.get(i).getFixtureNumber();//--method call to Fixture class
+              f2 = fixtureArrayList.get(i).getHomeFixture();//---method call to Fixture class
+              f3 = fixtureArrayList.get(i).getAwayFixture();//---method call to Fixture class
+              teamName1=teamsArrayList.get(f2 - 1).getTeamName();//---method call to Teams class
+              teamName2= "Vs" + teamsArrayList.get(f3 - 1).getTeamName();//---method call to Teams class
+              tempInt = longestWord - teamName1.length();
+              for (int x = 0; x < tempInt; x++)
+                  {
+                    emptySpaces += " ";
+                  }
+              result += f1 + "\t" + teamName1 + emptySpaces + "\tVS\t" + teamName2 + "\n";
+            }
+            System.out.println(result);
+
      }
      ////////////////////////////////////////// Method View Future Fixtures ////////////////////////////////////////////////////////
      public static void viewFutureFixtures()throws IOException
