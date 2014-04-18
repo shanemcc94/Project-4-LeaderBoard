@@ -20,7 +20,8 @@ public class project4
 	
 
 	public static void main(String[]args)throws IOException
-	{ //call to createArrayListFixture Method
+	{ 
+	//call to createArrayListFixture Method
 		fixtureArrayList = createArrayListFixture();
     //call to createArrayListResults Method     	 
 		resultsArrayList = createArrayListResults();
@@ -35,36 +36,7 @@ public class project4
     //resultsArrayListInteger = createArrayListInteger(filename2);
     //------------------------------------------------------------//
     teamsArrayListSpring  = createArrayListString();
-    ///////////////////////  can be deleted later Its ju8st a test!////////////////
-    //----------------------------------------------------------------------------//
-		String tester1="";
-		String tester2="";
-		String tester3="";
-	    for (int i=0; i< fixtureArrayList.size() ;i++)
-		    {
-           tester1 += (fixtureArrayList.get(i)).getFixtureNumber() +"\t"; 
-           tester1 += (fixtureArrayList.get(i)).getHomeFixture() +"\t"; 
-           tester1 += (fixtureArrayList.get(i)).getAwayFixture() + "\n"; 
-		    }
-	    for (int i=0; i< resultsArrayList.size() ; i++)
-	      {
-          tester2 += resultsArrayList.get(i).getFixtureNumber() +"\t"; 
-          tester2 += resultsArrayList.get(i).getHomeScore() +"\t"; 
-          tester2 += resultsArrayList.get(i).getAwayScore() +"\n"; 
-	      }   
-	    for (int i=0; i< teamsArrayList.size(); i++)
-	      {
-          tester3 += teamsArrayList.get(i).getTeamNumber() + "\t";
-          tester3 += teamsArrayList.get(i).getTeamName() + "\n";
-	      }
-	    System.out.println("This here should output FixtureList!\n");
-	    System.out.println(tester1);
-	    System.out.println("This here should output resultsList!\n");
-	    System.out.println(tester2);
-	    System.out.println("This here should output TeamsList!\n");
-	    System.out.println(tester3); 
-      ///////////////////End of test////////End of test////////////////////////////////
-       //----------------------------------------------------------------------------//
+
       //---------------------Start of evaluation of userChoice!----------------------//
 		  String userInput ="";
       int userInputChoice;
@@ -294,15 +266,13 @@ public class project4
         }
       else
         {
-          globalScanner = new Scanner (globalFile );
-          System.out.println("Another test for teams!");
+          globalScanner = new Scanner (globalFile );          
           while(globalScanner.hasNext())
           {
            tempArray.add(globalScanner.nextLine());
           }
           globalScanner.close();
-          for(int i = 0; i<tempArray.size(); i++)
-          System.out.println(tempArray.get(i));
+
         }
       return tempArray; 
       }
@@ -332,6 +302,8 @@ public class project4
         //-- String to hold empty spaces!
         String emptySpaces;
         int tempInt =0;
+		result += "\t\tFixtures already played\n";
+	    result += "FIXTURE No. \tHOME TEAM \t\t\tAWAY TEAM\n";
         for (int i = 0; i < resultsArrayList.size(); i++)
             {
               //---Assures string is empty and holds nothing before each iteration!
@@ -346,16 +318,73 @@ public class project4
                   {
                     emptySpaces += " ";
                   }
-              result += f1 + "\t" + teamName1 + emptySpaces + "\tVS\t" + teamName2 + "\n";
+
+              result += f1 + "\t\t" + teamName1 + emptySpaces + "\tVS\t" + teamName2 + "\n";
             }
             System.out.println(result);
 
      }
      ////////////////////////////////////////// Method View Future Fixtures ////////////////////////////////////////////////////////
-     public static void viewFutureFixtures()throws IOException
+    public static void viewFutureFixtures()throws IOException
      {
-              System.out.println("TeststRun [\"viewFutureFixtures\" ]");
-     }
+	     /* This method compares the length of the results array and the length of the fixtures array.
+	     	if the results array is shorter than the fixtures, the remaining details of the fixtures array are 
+	     	displayed to the user as fixtures yet to be played.*/
+	     String team1 = "", team2 = "", result = "", tempWord, tempWord1 = "";
+	     tempWord = teamsArrayList.get(0).getTeamName();//assigns first team in teamsArrayList to temp word.
+	     
+	     //loop to assign the longest team name to tempWord	
+	     for(int x = 0; x < teamsArrayList.size(); x++)
+	     {
+	     tempWord1 = teamsArrayList.get(x).getTeamName();
+	     
+	     if(tempWord1.length() > tempWord.length())
+	     {
+		     tempWord = tempWord1;
+	     }
+     	 }
+     	      
+	     int t0 ,t1, t2, x, lw;
+	     lw = tempWord.length();
+			
+	     x = fixtureArrayList.size();
+	     
+         if(fixtureArrayList.size() > resultsArrayList.size())
+         {
+	     result += "\t\tFixtures yet to be played\n";
+	     result += "FIXTURE No. \tHOME TEAM \t\t\t AWAY TEAM\n";
+	     for(int i = i = resultsArrayList.size();  i < x ; i++)
+	     {
+		     t0 = fixtureArrayList.get(i).getFixtureNumber();//--method call to Fixture class
+		     t1 = fixtureArrayList.get(i).getHomeFixture();//--method call to Fixture class
+		     t2 = fixtureArrayList.get(i).getAwayFixture();//--method call to Fixture class
+		     	for(int j = 0; j < teamsArrayList.size(); j++)
+		     	{
+			     	//A number of calls to Teams class to get team names and assign them to a local string
+			     	if(t1 == teamsArrayList.get(j).getTeamNumber())
+			     	{
+				     	team1 = teamsArrayList.get(j).getTeamName();
+			     	}
+			     	if(t2 == teamsArrayList.get(j).getTeamNumber())
+			     	{
+				     	team2 = teamsArrayList.get(j).getTeamName();
+			     	}
+			     	
+	     		}
+	     		//this if statement assigns all teams to the same length for output purposes
+	     				if(team1.length() < lw)
+				     	{
+					     	for(int k = team1.length(); k < lw; k++)
+					     	{
+						     	team1 += " ";
+					     	}
+				     	}
+	     		
+	     		result += (t0 + "\t\t" + team1 + "\tVs\t " + team2 + "\n");
+	     }
+	     System.out.print(result);
+     	}
+	 }
      ////////////////////////////////////////// Method Display Table ////////////////////////////////////////////////////////
     public static void displayTable()throws IOException
     {
@@ -364,7 +393,7 @@ public class project4
 		{		   
 			LeaderBoard aLeaderBoardEntry = new LeaderBoard(0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 			aLeaderBoard.add(aLeaderBoardEntry);
-			System.out.println("[" + aLeaderBoardEntry + "");
+			//System.out.println("[" + aLeaderBoardEntry + "");
 		}
 	
 		for(int i = 0; i<resultsArrayList.size();i++)
@@ -377,7 +406,7 @@ public class project4
 			Fixtures aFixture = fixtureArrayList.get(i);						 
 			int aHomeTeamNumber = aFixture.getHomeFixture();
 			int aAwayTeamNumber = aFixture.getAwayFixture();
-			System.out.println(aFixtureNumber + "\t" + aHomeScore + "\t" + aAwayScore  + "\t" + aHomeTeamNumber + "\t" + aAwayTeamNumber);
+			//System.out.println(aFixtureNumber + "\t" + aHomeScore + "\t" + aAwayScore  + "\t" + aHomeTeamNumber + "\t" + aAwayTeamNumber);
 			if(aHomeScore == aAwayScore)
 			{
 				recordFixtureResultForHomeTeam(aHomeTeamNumber,0,1,0,aHomeScore,aAwayScore,1);
