@@ -306,7 +306,7 @@ public class project4
         }
       return tempArray; 
       }
-     ////////////////////////////////////////// Method View Fixtures ////////////////////////////////////////////////////////
+      ////////////////////////////////////////// Method View Fixtures ////////////////////////////////////////////////////////
      public static void viewListOfFixtures()throws IOException
      {
         /*This Methods displayes to date played fixtures!*/
@@ -340,7 +340,7 @@ public class project4
               f2 = fixtureArrayList.get(i).getHomeFixture();//---method call to Fixture class
               f3 = fixtureArrayList.get(i).getAwayFixture();//---method call to Fixture class
               teamName1=teamsArrayList.get(f2 - 1).getTeamName();//---method call to Teams class
-              teamName2= "Vs" + teamsArrayList.get(f3 - 1).getTeamName();//---method call to Teams class
+              teamName2=  teamsArrayList.get(f3 - 1).getTeamName();//---method call to Teams class
               tempInt = longestWord - teamName1.length();
               for (int x = 0; x < tempInt; x++)
                   {
@@ -364,24 +364,17 @@ public class project4
 		{		   
 			LeaderBoard aLeaderBoardEntry = new LeaderBoard(0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 			aLeaderBoard.add(aLeaderBoardEntry);
-			System.out.println("[" + aLeaderBoard.get(i) + "");
+			System.out.println("[" + aLeaderBoardEntry + "");
 		}
-		
-		
-		
 	
-		//process outcomes
 		for(int i = 0; i<resultsArrayList.size();i++)
 		{
 
 			Results aResult = resultsArrayList.get(i);
 			int aFixtureNumber = aResult.getFixtureNumber();
 			int aHomeScore = aResult.getHomeScore();
-			int aAwayScore = aResult.getAwayScore();
-			//int position = fixtureArrayList.indexOf(aFixtureNumber);
-			Fixtures aFixture = fixtureArrayList.get(i);
-			
-			 
+			int aAwayScore = aResult.getAwayScore();			
+			Fixtures aFixture = fixtureArrayList.get(i);						 
 			int aHomeTeamNumber = aFixture.getHomeFixture();
 			int aAwayTeamNumber = aFixture.getAwayFixture();
 			System.out.println(aFixtureNumber + "\t" + aHomeScore + "\t" + aAwayScore  + "\t" + aHomeTeamNumber + "\t" + aAwayTeamNumber);
@@ -404,7 +397,8 @@ public class project4
 				recordFixtureResultForAwayTeam(aAwayTeamNumber,1,0,0,aHomeScore,aAwayScore,3);											
 			}
 		}
-			
+		//Order LeaderBoardMethod
+		//displayLeaderBoard();
 			
 		
 	}
@@ -416,8 +410,8 @@ public class project4
 		aLeaderBoardEntry = aLeaderBoard.get(aHTeamNumber-1);
 		aLeaderBoardEntry.setTeamNumber(aHTeamNumber-1);
 		aLeaderBoardEntry.setGamesPlayed(1);	aLeaderBoardEntry.setHomeWins(w);
-		aLeaderBoardEntry.setHomeDraws(d);		aLeaderBoardEntry.setHomeLosses(l);
-		aLeaderBoardEntry.setHomeGoalsFor(hScore);
+		aLeaderBoardEntry.setHomeDraw(d);		aLeaderBoardEntry.setHomeLoss(l);
+		aLeaderBoardEntry.setHomeGoalsfor(hScore);
 		aLeaderBoardEntry.setHomeGoalsAgainst(aScore);
 		aLeaderBoardEntry.setGoalDifference(hScore-aScore);
 		aLeaderBoardEntry.setTotalPoints(points);
@@ -431,14 +425,11 @@ public class project4
 		aLeaderBoardEntry = aLeaderBoard.get(aATeamNumber-1);
 		aLeaderBoardEntry.setTeamNumber(aATeamNumber-1);
 		aLeaderBoardEntry.setGamesPlayed(1);	aLeaderBoardEntry.setAwayWins(w);
-		aLeaderBoardEntry.setAwayDraws(d);		aLeaderBoardEntry.setAwayLosses(l);
+		aLeaderBoardEntry.setAwayDraws(d);		aLeaderBoardEntry.setAwayLoss(l);
 		aLeaderBoardEntry.setAwayGoalsFor(aScore);
 		aLeaderBoardEntry.setAwayGoalsAgainst(hScore);
 		aLeaderBoardEntry.setGoalDifference(aScore-hScore);
-		aLeaderBoardEntry.setTotalPoints(points);
-	
-	
-	}
-		
-     
+		aLeaderBoardEntry.setTotalPoints(points);		
+	}	
+
 }
