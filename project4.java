@@ -20,7 +20,8 @@ public class project4
 	
 
 	public static void main(String[]args)throws IOException
-	{ //call to createArrayListFixture Method
+	{ 
+	//call to createArrayListFixture Method
 		fixtureArrayList = createArrayListFixture();
     //call to createArrayListResults Method     	 
 		resultsArrayList = createArrayListResults();
@@ -35,36 +36,7 @@ public class project4
     //resultsArrayListInteger = createArrayListInteger(filename2);
     //------------------------------------------------------------//
     teamsArrayListSpring  = createArrayListString();
-    ///////////////////////  can be deleted later Its ju8st a test!////////////////
-    //----------------------------------------------------------------------------//
-		String tester1="";
-		String tester2="";
-		String tester3="";
-	    for (int i=0; i< fixtureArrayList.size() ;i++)
-		    {
-           tester1 += (fixtureArrayList.get(i)).getFixtureNumber() +"\t"; 
-           tester1 += (fixtureArrayList.get(i)).getHomeFixture() +"\t"; 
-           tester1 += (fixtureArrayList.get(i)).getAwayFixture() + "\n"; 
-		    }
-	    for (int i=0; i< resultsArrayList.size() ; i++)
-	      {
-          tester2 += resultsArrayList.get(i).getFixtureNumber() +"\t"; 
-          tester2 += resultsArrayList.get(i).getHomeScore() +"\t"; 
-          tester2 += resultsArrayList.get(i).getAwayScore() +"\n"; 
-	      }   
-	    for (int i=0; i< teamsArrayList.size(); i++)
-	      {
-          tester3 += teamsArrayList.get(i).getTeamNumber() + "\t";
-          tester3 += teamsArrayList.get(i).getTeamName() + "\n";
-	      }
-	    System.out.println("This here should output FixtureList!\n");
-	    System.out.println(tester1);
-	    System.out.println("This here should output resultsList!\n");
-	    System.out.println(tester2);
-	    System.out.println("This here should output TeamsList!\n");
-	    System.out.println(tester3); 
-      ///////////////////End of test////////End of test////////////////////////////////
-       //----------------------------------------------------------------------------//
+
       //---------------------Start of evaluation of userChoice!----------------------//
 		  String userInput ="";
       int userInputChoice;
@@ -294,15 +266,13 @@ public class project4
         }
       else
         {
-          globalScanner = new Scanner (globalFile );
-          System.out.println("Another test for teams!");
+          globalScanner = new Scanner (globalFile );          
           while(globalScanner.hasNext())
           {
            tempArray.add(globalScanner.nextLine());
           }
           globalScanner.close();
-          for(int i = 0; i<tempArray.size(); i++)
-          System.out.println(tempArray.get(i));
+
         }
       return tempArray; 
       }
@@ -332,6 +302,8 @@ public class project4
         //-- String to hold empty spaces!
         String emptySpaces;
         int tempInt =0;
+		result += "\t\tFixtures already played\n";
+	    result += "FIXTURE No. \tHOME TEAM \t\t\tAWAY TEAM\n";
         for (int i = 0; i < resultsArrayList.size(); i++)
             {
               //---Assures string is empty and holds nothing before each iteration!
@@ -346,7 +318,8 @@ public class project4
                   {
                     emptySpaces += " ";
                   }
-              result += f1 + "\t" + teamName1 + emptySpaces + "\tVS\t" + teamName2 + "\n";
+
+              result += f1 + "\t\t" + teamName1 + emptySpaces + "\tVS\t" + teamName2 + "\n";
             }
             System.out.println(result);
 
@@ -420,7 +393,7 @@ public class project4
 		{		   
 			LeaderBoard aLeaderBoardEntry = new LeaderBoard(0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 			aLeaderBoard.add(aLeaderBoardEntry);
-			System.out.println("[" + aLeaderBoardEntry + "");
+			//System.out.println("[" + aLeaderBoardEntry + "");
 		}
 	
 		for(int i = 0; i<resultsArrayList.size();i++)
@@ -433,7 +406,7 @@ public class project4
 			Fixtures aFixture = fixtureArrayList.get(i);						 
 			int aHomeTeamNumber = aFixture.getHomeFixture();
 			int aAwayTeamNumber = aFixture.getAwayFixture();
-			System.out.println(aFixtureNumber + "\t" + aHomeScore + "\t" + aAwayScore  + "\t" + aHomeTeamNumber + "\t" + aAwayTeamNumber);
+			//System.out.println(aFixtureNumber + "\t" + aHomeScore + "\t" + aAwayScore  + "\t" + aHomeTeamNumber + "\t" + aAwayTeamNumber);
 			if(aHomeScore == aAwayScore)
 			{
 				recordFixtureResultForHomeTeam(aHomeTeamNumber,0,1,0,aHomeScore,aAwayScore,1);
