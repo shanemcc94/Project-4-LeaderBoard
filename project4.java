@@ -81,8 +81,7 @@ public class project4
     while ( !validInput )
        {
         System.out.println(menuDisplay);
-        userInput = globalScanner.nextLine();
-        System.out.println("[" + userInput + "]");
+        userInput = globalScanner.nextLine();      
         if( userInput == null || userInput.matches(pattern))
           {
            validInput=true;
@@ -297,13 +296,15 @@ public class project4
         int f2 =0;
         int f3 =0; 
         String result ="";
+		int homeScore = 0;
+		int awayScore = 0;
         String teamName1="";
         String  teamName2="";
         //-- String to hold empty spaces!
         String emptySpaces;
         int tempInt =0;
-		result += "\t\tFixtures already played\n";
-	    result += "FIXTURE No. \tHOME TEAM \t\t\tAWAY TEAM\n";
+		result += "\t\t\t\tFIXTURES PLAYED\n";
+	    result += "FIXTURE No. \tHOME TEAM \t\t\tRESULT\t\tAWAY TEAM\n";
         for (int i = 0; i < resultsArrayList.size(); i++)
             {
               //---Assures string is empty and holds nothing before each iteration!
@@ -311,6 +312,8 @@ public class project4
               f1 = fixtureArrayList.get(i).getFixtureNumber();//--method call to Fixture class
               f2 = fixtureArrayList.get(i).getHomeFixture();//---method call to Fixture class
               f3 = fixtureArrayList.get(i).getAwayFixture();//---method call to Fixture class
+			  homeScore = resultsArrayList.get(i).getHomeScore();
+			  awayScore = resultsArrayList.get(i).getAwayScore();
               teamName1=teamsArrayList.get(f2 - 1).getTeamName();//---method call to Teams class
               teamName2=  teamsArrayList.get(f3 - 1).getTeamName();//---method call to Teams class
               tempInt = longestWord - teamName1.length();
@@ -319,7 +322,7 @@ public class project4
                     emptySpaces += " ";
                   }
 
-              result += f1 + "\t\t" + teamName1 + emptySpaces + "\tVS\t" + teamName2 + "\n";
+              result += f1 + "\t\t" + teamName1  + emptySpaces +"\t\t(" + homeScore + "" + "-" + awayScore+")\t\t" + teamName2 + "\n";
             }
             System.out.println(result);
 
@@ -351,7 +354,7 @@ public class project4
 	     
          if(fixtureArrayList.size() > resultsArrayList.size())
          {
-	     result += "\t\tFixtures yet to be played\n";
+	     result += "\t\t\tFUTURE FIXTURES\n";
 	     result += "FIXTURE No. \tHOME TEAM \t\t\t AWAY TEAM\n";
 	     for(int i = i = resultsArrayList.size();  i < x ; i++)
 	     {
