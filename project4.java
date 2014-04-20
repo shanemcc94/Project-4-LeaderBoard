@@ -2,7 +2,7 @@ import java.util.*;
 import javax.swing.*;
 import java.text.*;
 import java.io.*;
-public class project4
+public class project4Group8
 {
   /*Global VAriable declarations*/
 	public static Scanner globalScanner;
@@ -430,9 +430,89 @@ public class project4
 			}
 		}
 		//Order LeaderBoardMethod
-		//displayLeaderBoard();
+		displayLeaderBoard();
 			
 		
+	}
+	//////////////////////////////////////////*** DISPLAYING THE TABLE ***/////////////////////////////////////////
+	
+	public static void displayLeaderBoard()
+    {
+    	String TeamInfo [][] = new String [20][15];
+    	System.out.println("**********************************************************************************************************************************************************************");   	
+    	System.out.println("POSITION\t" + "TEAM\t\t\t\t" + "P\t" + "HOME\t" + "W\t" + "D\t" + "L\t"  + "F\t" + "A\t" + "AWAY\t" +  "W\t" + "D\t" + "L\t" + "F\t" + "A\t"+  "GD\t" + "POINTS\t" + "\n");
+    	
+    	for(int t = 0; t < 20; t++)
+    	{
+    		int played = 0;
+    		int homeWin = 0;  int awayWin = 0;
+    		int homeDraw = 0; int awayDraw = 0;
+    		int homeLoss = 0; int awayLoss = 0;
+			int gF = 0; int aGF = 0;
+			int gA = 0; int aGA = 0;
+			int gD = 0; int totalPoints = 0;
+    		    	    		
+    		//Fixtures aFixture = fixtureArrayList.get(t);
+    		TeamInfo[t][0] = "" + (t + 1);
+			String filledName = lengthenedString(teamsArrayList.get(t).getTeamName());
+			
+			
+    		TeamInfo[t][1] = filledName;
+    		
+    	   		
+    	   	for(int i = 0; i < resultsArrayList.size();i++)
+    	   	{
+    	   		if((t + 1) == fixtureArrayList.get(i).getHomeFixture()  )
+				{
+					played++;
+					if(resultsArrayList.get(i).getHomeScore() > resultsArrayList.get(i).getAwayScore())
+						homeWin++;  
+					if(resultsArrayList.get(i).getHomeScore() == resultsArrayList.get(i).getAwayScore())
+    	   				homeDraw++; 
+					if(resultsArrayList.get(i).getHomeScore() < resultsArrayList.get(i).getAwayScore())
+    	   				homeLoss++;  
+					gF+=(resultsArrayList.get(i).getHomeScore()); 
+					gA +=(resultsArrayList.get(i).getAwayScore());
+    	   		}
+    	   		if((t + 1) == fixtureArrayList.get(i).getAwayFixture()  )
+				{
+    				played++;					
+					if(resultsArrayList.get(i).getAwayScore() > resultsArrayList.get(i).getHomeScore())
+						awayWin++; 
+    	   			if(resultsArrayList.get(i).getAwayScore() == resultsArrayList.get(i).getHomeScore())
+    	   				awayDraw++;  
+    	   			if(resultsArrayList.get(i).getAwayScore() < resultsArrayList.get(i).getHomeScore())
+    	   				awayLoss++; 
+					aGA+=(resultsArrayList.get(i).getHomeScore());   
+					aGF+=(resultsArrayList.get(i).getAwayScore())  ;  					
+        	   	}	
+				gD = ((gF+aGF) - (gA+aGA));
+				totalPoints =(((homeWin+awayWin)*3) + (homeDraw+awayDraw));
+    		}
+    	   	TeamInfo[t][2] = "" + played;  //  Third column done(P)
+			TeamInfo[t][3] = "" + homeWin;  // Fourth column done(W)
+			TeamInfo[t][4] = "" + homeDraw; //Fifth column done(D)  
+			TeamInfo[t][5] = "" + homeLoss; //Sixth column done(L)
+			TeamInfo[t][6] = "" + gF; //Seventh column done(F)
+			TeamInfo[t][7] = "" + gA; //Seventh column done(A)			
+			TeamInfo[t][8] = "" + awayWin;  // Ninth column done(W)	
+			TeamInfo[t][9] = "" + awayDraw;  // Ninth column done(W)
+			TeamInfo[t][10] = "" + awayLoss;  // Ninth column done(W)	   
+			TeamInfo[t][11] = "" + aGF; //Seventh column done(F)
+			TeamInfo[t][12] = "" + aGA; //Seventh column done(A)
+			TeamInfo[t][13] = "" + gD; //Seventh column done(A)
+			TeamInfo[t][14] = "" + totalPoints; //Seventh column done(A)			
+    	   	System.out.println(TeamInfo[t][0] + "\t\t" + TeamInfo[t][1] + "\t\t" + TeamInfo[t][2] + "\t\t" + TeamInfo[t][3] + "\t" + TeamInfo[t][4] + "\t" + TeamInfo[t][5]+   "\t" + TeamInfo[t][6] +"\t" +  TeamInfo[t][7]  +"\t\t\t" + TeamInfo[t][8] + "\t" + TeamInfo[t][9] +"\t" + TeamInfo[t][10]+ "\t" + TeamInfo[t][11] +"\t" + TeamInfo[t][12]+ "\t" + TeamInfo[t][13]+ "\t" + TeamInfo[t][14]);
+    	   		
+    	}
+    	System.out.println("**********************************************************************************************************************************************************************");   	
+    	System.out.println("\n");
+
+    }   
+	public static String lengthenedString(String teamName)
+	{
+	  int fixedLength = 20;
+	  return String.format("%-"+fixedLength+ "s", teamName);				
 	}
 	
 	public static void recordFixtureResultForHomeTeam(int aHTeamNumber, int w, int d, int l, int hScore, int aScore, int points)
