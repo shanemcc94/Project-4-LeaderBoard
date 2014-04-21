@@ -385,62 +385,14 @@ public class project4Group8
 	     		
 	     		result += (t0 + "\t\t" + team1 + "\tVs\t " + team2 + "\n");
 	     }
-	     System.out.print(result);
+	     System.out.print(result +"\n");
      	}
-	 }
-     ////////////////////////////////////////// Method Display Table ////////////////////////////////////////////////////////
-    public static void displayTable()throws IOException
-    {
-		aLeaderBoard = new ArrayList<LeaderBoard>() ; 								
-		for(int i = 0; i<teamsArrayList.size();i++)
-		{		   
-			LeaderBoard aLeaderBoardEntry = new LeaderBoard(0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-			aLeaderBoard.add(aLeaderBoardEntry);
-			//System.out.println("[" + aLeaderBoardEntry + "");
-		}
-	
-		for(int i = 0; i<resultsArrayList.size();i++)
-		{
-
-			Results aResult = resultsArrayList.get(i);
-			int aFixtureNumber = aResult.getFixtureNumber();
-			int aHomeScore = aResult.getHomeScore();
-			int aAwayScore = aResult.getAwayScore();			
-			Fixtures aFixture = fixtureArrayList.get(i);						 
-			int aHomeTeamNumber = aFixture.getHomeFixture();
-			int aAwayTeamNumber = aFixture.getAwayFixture();
-			//System.out.println(aFixtureNumber + "\t" + aHomeScore + "\t" + aAwayScore  + "\t" + aHomeTeamNumber + "\t" + aAwayTeamNumber);
-			if(aHomeScore == aAwayScore)
-			{
-				recordFixtureResultForHomeTeam(aHomeTeamNumber,0,1,0,aHomeScore,aAwayScore,1);
-				recordFixtureResultForAwayTeam(aAwayTeamNumber,0,1,0,aHomeScore,aAwayScore,1);
-			}
-			
-			else if (aHomeScore > aAwayScore)
-			{
-				recordFixtureResultForHomeTeam(aHomeTeamNumber,1,0,0,aHomeScore,aAwayScore,3);
-				recordFixtureResultForAwayTeam(aAwayTeamNumber,0,0,1,aHomeScore,aAwayScore,0);									
-			}
-			
-			
-			else
-			{
-				recordFixtureResultForHomeTeam(aHomeTeamNumber,0,0,1,aHomeScore,aAwayScore,0);
-				recordFixtureResultForAwayTeam(aAwayTeamNumber,1,0,0,aHomeScore,aAwayScore,3);											
-			}
-		}
-		//Order LeaderBoardMethod
-		displayLeaderBoard();
-			
-		
-	}
-	//////////////////////////////////////////*** DISPLAYING THE TABLE ***/////////////////////////////////////////
-	
-	public static void displayLeaderBoard()
+	 } 
+	public static void displayTable()
     {
     	String TeamInfo [][] = new String [20][15];
-    	System.out.println("**********************************************************************************************************************************************************************");   	
-    	System.out.println("POSITION\t" + "TEAM\t\t\t\t" + "P\t" + "HOME\t" + "W\t" + "D\t" + "L\t"  + "F\t" + "A\t" + "AWAY\t" +  "W\t" + "D\t" + "L\t" + "F\t" + "A\t"+  "GD\t" + "POINTS\t" + "\n");
+    	System.out.println("*****************************************************************************************************************************************");   	
+    	System.out.println("POS.\t" + "TEAM\t\t" + "\tP\t" + "HW\t" + "HD\t" + "HL\t"  + "HGF\t" + "HGA\t" +  "AW\t" + "AD\t" + "AL\t" + "\tAGF\t" + "AGA\t"+  "GD\t" + "POINTS\t" + "\n");
     	
     	for(int t = 0; t < 20; t++)
     	{
@@ -488,60 +440,49 @@ public class project4Group8
         	   	}	
 				gD = ((gF+aGF) - (gA+aGA));
 				totalPoints =(((homeWin+awayWin)*3) + (homeDraw+awayDraw));
+		
     		}
     	   	TeamInfo[t][2] = "" + played;  //  Third column done(P)
 			TeamInfo[t][3] = "" + homeWin;  // Fourth column done(W)
 			TeamInfo[t][4] = "" + homeDraw; //Fifth column done(D)  
 			TeamInfo[t][5] = "" + homeLoss; //Sixth column done(L)
 			TeamInfo[t][6] = "" + gF; //Seventh column done(F)
-			TeamInfo[t][7] = "" + gA; //Seventh column done(A)			
+			TeamInfo[t][7] = "" + gA; //Eight column done(GA)			
 			TeamInfo[t][8] = "" + awayWin;  // Ninth column done(W)	
-			TeamInfo[t][9] = "" + awayDraw;  // Ninth column done(W)
-			TeamInfo[t][10] = "" + awayLoss;  // Ninth column done(W)	   
-			TeamInfo[t][11] = "" + aGF; //Seventh column done(F)
-			TeamInfo[t][12] = "" + aGA; //Seventh column done(A)
-			TeamInfo[t][13] = "" + gD; //Seventh column done(A)
-			TeamInfo[t][14] = "" + totalPoints; //Seventh column done(A)			
-    	   	System.out.println(TeamInfo[t][0] + "\t\t" + TeamInfo[t][1] + "\t\t" + TeamInfo[t][2] + "\t\t" + TeamInfo[t][3] + "\t" + TeamInfo[t][4] + "\t" + TeamInfo[t][5]+   "\t" + TeamInfo[t][6] +"\t" +  TeamInfo[t][7]  +"\t\t\t" + TeamInfo[t][8] + "\t" + TeamInfo[t][9] +"\t" + TeamInfo[t][10]+ "\t" + TeamInfo[t][11] +"\t" + TeamInfo[t][12]+ "\t" + TeamInfo[t][13]+ "\t" + TeamInfo[t][14]);
-    	   		
-    	}
-    	System.out.println("**********************************************************************************************************************************************************************");   	
-    	System.out.println("\n");
+			TeamInfo[t][9] = "" + awayDraw;  // Tenth column done(D)
+			TeamInfo[t][10] = "" + awayLoss;  // Eleventh column done(L)	   
+			TeamInfo[t][11] = "" + aGF; //Twelfth  column done(GF)
+			TeamInfo[t][12] = "" + aGA; //Thirteenth column done(GA)
+			TeamInfo[t][13] = "" + gD; //Fourteenth column done(GD)
+			TeamInfo[t][14] = "" + totalPoints; //Fifteenth column done(P)			
+    	   	//System.out.println(TeamInfo[t][0] + "\t\t" + TeamInfo[t][1] + "\t\t" + TeamInfo[t][2] + "\t\t" + TeamInfo[t][3] + "\t" + TeamInfo[t][4] + "\t" + TeamInfo[t][5]+   "\t" + TeamInfo[t][6] +"\t" +  TeamInfo[t][7]  +"\t\t\t" + TeamInfo[t][8] + "\t" + TeamInfo[t][9] +"\t" + TeamInfo[t][10]+ "\t" + TeamInfo[t][11] +"\t" + TeamInfo[t][12]+ "\t" + TeamInfo[t][13]+ "\t" + TeamInfo[t][14]);
 
+    	}
+		
+		
+	
+		
+		
+		for(int i = 0;i<20;i++)
+		{
+			for (int j = 0;j<15;j++)
+			{
+				System.out.print(TeamInfo[i][j] + "\t");				
+			}
+			System.out.print("\n");
+			
+		}
+		//Sort here
+		
+
+		System.out.println("*****************************************************************************************************************************************");   	
+    	System.out.println("\n");
+		
     }   
 	public static String lengthenedString(String teamName)
 	{
 	  int fixedLength = 20;
 	  return String.format("%-"+fixedLength+ "s", teamName);				
 	}
-	
-	public static void recordFixtureResultForHomeTeam(int aHTeamNumber, int w, int d, int l, int hScore, int aScore, int points)
-	{
-
-		LeaderBoard aLeaderBoardEntry = null;
-		aLeaderBoardEntry = aLeaderBoard.get(aHTeamNumber-1);
-		aLeaderBoardEntry.setTeamNumber(aHTeamNumber-1);
-		aLeaderBoardEntry.setGamesPlayed(1);	aLeaderBoardEntry.setHomeWins(w);
-		aLeaderBoardEntry.setHomeDraw(d);		aLeaderBoardEntry.setHomeLoss(l);
-		aLeaderBoardEntry.setHomeGoalsfor(hScore);
-		aLeaderBoardEntry.setHomeGoalsAgainst(aScore);
-		aLeaderBoardEntry.setGoalDifference(hScore-aScore);
-		aLeaderBoardEntry.setTotalPoints(points);
-	
-	
-	}
-		
-	public static void recordFixtureResultForAwayTeam(int aATeamNumber, int w, int d, int l, int hScore, int aScore, int points)
-	{
-		LeaderBoard aLeaderBoardEntry = null;
-		aLeaderBoardEntry = aLeaderBoard.get(aATeamNumber-1);
-		aLeaderBoardEntry.setTeamNumber(aATeamNumber-1);
-		aLeaderBoardEntry.setGamesPlayed(1);	aLeaderBoardEntry.setAwayWins(w);
-		aLeaderBoardEntry.setAwayDraws(d);		aLeaderBoardEntry.setAwayLoss(l);
-		aLeaderBoardEntry.setAwayGoalsFor(aScore);
-		aLeaderBoardEntry.setAwayGoalsAgainst(hScore);
-		aLeaderBoardEntry.setGoalDifference(aScore-hScore);
-		aLeaderBoardEntry.setTotalPoints(points);		
-	}	
 
 }
