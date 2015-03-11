@@ -3,7 +3,7 @@ Project-4
 
 Projects
 Menu driven java application in which the user should be permitted 
-to repeatedly choose options froom the menu until exit is selected.
+to repeatedly choose options from the menu until exit is selected.
 
 Make use of object orientated programming and file manipulation.
 
