@@ -2,7 +2,7 @@ import java.util.*;
 import javax.swing.*;
 import java.text.*;
 import java.io.*;
-public class project4Group8
+public class fixtures
 {
   /*Global VAriable declarations*/
 	public static Scanner globalScanner;
@@ -14,7 +14,7 @@ public class project4Group8
 	public static ArrayList<Results>  resultsArrayList =new ArrayList<Results>() ;
 	public static ArrayList<Teams>    teamsArrayList = new ArrayList<Teams>() ; 
 	public static ArrayList<LeaderBoard>    aLeaderBoard = new ArrayList<LeaderBoard>() ;
-    public static ArrayList<LeaderBoard>    aLeaderBoardEntry = new ArrayList<LeaderBoard>() ;	
+    	public static ArrayList<LeaderBoard>    aLeaderBoardEntry = new ArrayList<LeaderBoard>() ;	
 		
 	
 	
